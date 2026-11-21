@@ -1,5 +1,5 @@
 torch==2.5.1
-transformers==4.46.3
+transformers==5.10.1
 gradio==5.50.0
 sentencepiece==0.2.0
 protobuf==5.29.5
