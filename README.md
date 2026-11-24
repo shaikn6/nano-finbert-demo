@@ -1,5 +1,7 @@
 # Financial sentiment: FinBERT small vs large
 
+[![CI](https://github.com/shaikn6/nano-finbert-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/shaikn6/nano-finbert-demo/actions/workflows/ci.yml)
+
 **Pick a model and get positive / negative / neutral on financial text, with a side-by-side small-vs-large trade-off. The 33M MiniLM is fast; the 435M DeBERTa-large is a few points more accurate at ~19x the CPU latency. Both are weak on headlines; negative headlines are not reliably found (see Limits).**
 
 Paste a sentence (Single tab) or one headline per line (Batch tab) and read the
@@ -16,8 +18,8 @@ uncalibrated inputs.
 ## What was measured
 
 Held-out sets, never used in training or model selection. Accuracy / macro-F1.
-DeBERTa numbers are for transformers 4.x (this Space pins `transformers==4.46.3`);
-on transformers 5.x its tweet score drops to ~89.5%.
+DeBERTa numbers were measured on `transformers==4.46.3`. This repo now pins `transformers==5.23.0`
+for security fixes, and on 5.x the DeBERTa tweet score drops to ~89.5%.
 
 | Held-out set | n | MiniLM 33M | DeBERTa-large 435M |
 |--------------|---|-----------|--------------------|
@@ -52,3 +54,10 @@ abstain logic with fake logits — no weights are downloaded.
 
 Training details, per-class results and usage code are on each model card.
 Educational from-scratch version: [github.com/shaikn6/nano-finbert](https://github.com/shaikn6/nano-finbert).
+
+## Run locally
+
+```bash
+pip install -r requirements.txt pytest
+python app.py
+```
